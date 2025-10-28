@@ -35,7 +35,7 @@ export default function LayoutDemo() {
         {/* About Section */}
         <section id="about" className="container section" style={{ minHeight: '100vh' }}>
           <h2>About Us</h2>
-          <p>Learn about Streetman Flames - UPSA's favorite street food spot!</p>
+          <p>Learn about Streetman Flames - UPSA&apos;s favorite street food spot!</p>
           <div style={{ height: '60vh' }}></div>
         </section>
 
