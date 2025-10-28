@@ -43,7 +43,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label
             htmlFor={inputId}
-            className="mb-2 block text-sm font-semibold text-[var(--color-heading)]"
+            className="mb-2 block text-sm font-semibold text-(--color-heading)"
           >
             {label}
           </label>
@@ -51,7 +51,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         
         <div className="relative">
           {leftIcon && (
-            <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--color-text)]">
+            <div className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-(--color-text)">
               {leftIcon}
             </div>
           )}
@@ -63,10 +63,10 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             className={cn(
               'w-full rounded-lg border-2 px-4 py-3 text-base transition-all duration-200',
               'placeholder:text-gray-400',
-              'focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-1',
+              'focus:outline-none focus:ring-2 focus:ring-(--color-primary) focus:ring-offset-1',
               error
                 ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                : 'border-gray-300 focus:border-[var(--color-primary)]',
+                : 'border-gray-300 focus:border-(--color-primary)',
               leftIcon && 'pl-10',
               rightIcon && 'pr-10',
               props.disabled && 'cursor-not-allowed bg-gray-100 opacity-60',
@@ -76,7 +76,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
           
           {rightIcon && (
-            <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--color-text)]">
+            <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-(--color-text)">
               {rightIcon}
             </div>
           )}
@@ -87,7 +87,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
         
         {helperText && !error && (
-          <p className="mt-1 text-sm text-[var(--color-text)]">{helperText}</p>
+          <p className="mt-1 text-sm text-(--color-text)">{helperText}</p>
         )}
       </div>
     );
@@ -115,7 +115,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         {label && (
           <label
             htmlFor={textareaId}
-            className="mb-2 block text-sm font-semibold text-[var(--color-heading)]"
+            className="mb-2 block text-sm font-semibold text-(--color-heading)"
           >
             {label}
           </label>
@@ -127,11 +127,11 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           className={cn(
             'w-full rounded-lg border-2 px-4 py-3 text-base transition-all duration-200',
             'placeholder:text-gray-400',
-            'focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:ring-offset-1',
+            'focus:outline-none focus:ring-2 focus:ring-(--color-primary) focus:ring-offset-1',
             'min-h-[120px] resize-y',
             error
               ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-              : 'border-gray-300 focus:border-[var(--color-primary)]',
+              : 'border-gray-300 focus:border-(--color-primary)',
             props.disabled && 'cursor-not-allowed bg-gray-100 opacity-60',
             className
           )}
@@ -143,7 +143,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
         
         {helperText && !error && (
-          <p className="mt-1 text-sm text-[var(--color-text)]">{helperText}</p>
+          <p className="mt-1 text-sm text-(--color-text)">{helperText}</p>
         )}
       </div>
     );

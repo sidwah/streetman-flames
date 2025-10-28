@@ -109,7 +109,7 @@ export const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
       <h3
         ref={ref}
         className={cn(
-          'text-xl font-bold text-[var(--color-heading)]',
+          'text-xl font-bold text-(--color-heading)',
           className
         )}
         {...props}
@@ -134,7 +134,7 @@ export const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
     return (
       <div
         ref={ref}
-        className={cn('text-[var(--color-text)]', className)}
+        className={cn('text-(--color-text)', className)}
         {...props}
       >
         {children}
