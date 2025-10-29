@@ -6,34 +6,31 @@ import { Button } from '@/components/ui/button';
 import { Phone } from 'lucide-react';
 
 /**
- * Navigation Component (Desktop)
+ * Desktop Navigation Component
  * 
- * Desktop navigation menu with:
- * - Smooth scroll links
- * - Active section highlighting
- * - Primary CTA button
- * - Hover effects
+ * Features:
+ * - Clean navigation links (Home, About, Menu, Contact)
+ * - Orange "Order Now" button
+ * - Smooth scroll to sections
+ * - Active link highlighting
  */
 export function Navigation() {
   const [activeSection, setActiveSection] = React.useState('home');
 
+  // Track active section on scroll
   React.useEffect(() => {
     const handleScroll = () => {
-      const sections = NAV_LINKS.map((link) =>
-        link.href.replace('#', '')
-      );
-
-      const currentSection = sections.find((section) => {
+      const sections = NAV_LINKS.map(link => link.href.substring(1));
+      
+      for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveSection(section);
+            break;
+          }
         }
-        return false;
-      });
-
-      if (currentSection) {
-        setActiveSection(currentSection);
       }
     };
 
@@ -41,10 +38,7 @@ export function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const target = document.querySelector(href);
     if (target) {
@@ -60,40 +54,44 @@ export function Navigation() {
   };
 
   return (
-    <nav className="flex items-center gap-8">
+    <>
       {/* Navigation Links */}
-      <ul className="flex items-center gap-6">
+      <nav className="flex items-center gap-8">
         {NAV_LINKS.map((link) => {
-          const isActive =
-            activeSection === link.href.replace('#', '');
-
+          const sectionId = link.href.substring(1);
+          const isActive = activeSection === sectionId;
+          
           return (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={(e) => handleClick(e, link.href)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive
-                    ? 'text-primary'
-                    : 'text-text'
-                }`}
-              >
-                {link.label}
-              </a>
-            </li>
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={(e) => handleClick(e, link.href)}
+              className={`text-base font-medium transition-colors hover:text-primary ${
+                isActive 
+                  ? 'text-primary' 
+                  : 'text-foreground'
+              }`}
+              style={{
+                color: isActive ? 'var(--primary)' : 'var(--foreground)',
+              }}
+            >
+              {link.label}
+            </a>
           );
         })}
-      </ul>
+      </nav>
 
-      {/* CTA Button */}
+      {/* Order Now Button */}
       <Button
         variant="primary"
         size="md"
-        leftIcon={<Phone className="h-4 w-4" />}
-        onClick={() => (window.location.href = 'tel:0257743913')}
+        leftIcon={<Phone className="h-5 w-5" />}
+        onClick={() => {
+          window.location.href = 'tel:0257743913';
+        }}
       >
         Order Now
       </Button>
-    </nav>
+    </>
   );
 }

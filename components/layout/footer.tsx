@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { SITE_CONFIG, FOOTER_LINKS } from '@/lib/constants';
 import { Phone, MapPin, Instagram } from 'lucide-react';
 
@@ -8,7 +9,8 @@ import { Phone, MapPin, Instagram } from 'lucide-react';
  * Footer Component
  * 
  * Site footer with:
- * - Brand logo
+ * - Bigger logo image (70x70px)
+ * - Brand name
  * - Quick links
  * - Contact information
  * - Social media links
@@ -50,8 +52,15 @@ export function Footer() {
         <div className="py-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-3xl">🔥</span>
+            <div className="flex items-center gap-3 mb-4">
+              {/* Logo Image - BIGGER (70x70) */}
+              <Image
+                src="/images/logo.png"
+                alt={`${SITE_CONFIG.name} Logo`}
+                width={70}
+                height={70}
+                className="object-contain"
+              />
               <span className="text-2xl font-bold">{SITE_CONFIG.name}</span>
             </div>
             <p className="text-white/80 mb-4">

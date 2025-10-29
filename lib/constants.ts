@@ -39,17 +39,14 @@ export const SITE_CONFIG = {
 };
 
 /**
- * Navigation Links
+ * Navigation Links - UPDATED & SIMPLIFIED
  * Used in both desktop and mobile menus
+ * Changed: Home, About, Menu, Contact (removed Popular Dishes, How It Works, Testimonials)
  */
 export const NAV_LINKS = [
   {
     label: 'Home',
     href: '#home',
-  },
-  {
-    label: 'Popular Dishes',
-    href: '#popular',
   },
   {
     label: 'About',
@@ -60,12 +57,8 @@ export const NAV_LINKS = [
     href: '#menu',
   },
   {
-    label: 'How It Works',
-    href: '#how-it-works',
-  },
-  {
-    label: 'Testimonials',
-    href: '#testimonials',
+    label: 'Contact',
+    href: '#contact',
   },
 ];
 
@@ -77,7 +70,7 @@ export const FOOTER_LINKS = {
     { label: 'Home', href: '#home' },
     { label: 'Menu', href: '#menu' },
     { label: 'About Us', href: '#about' },
-    { label: 'How to Order', href: '#how-it-works' },
+    { label: 'Contact', href: '#contact' },
   ],
   legal: [
     { label: 'Privacy Policy', href: '#privacy' },

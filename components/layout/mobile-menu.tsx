@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { NAV_LINKS, SITE_CONFIG } from '@/lib/constants';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Phone } from 'lucide-react';
@@ -10,9 +11,10 @@ import { Menu, X, Phone } from 'lucide-react';
  * 
  * Mobile navigation with:
  * - Hamburger icon toggle
- * - Slide-in overlay menu
- * - Navigation links
- * - CTA button
+ * - Slide-in overlay menu with SOLID WHITE background
+ * - Bigger logo (60x60px)
+ * - Clean navigation links (Home, About, Menu, Contact)
+ * - Orange "Order Now" button (matches desktop!)
  * - Close button
  * - Body scroll lock when open
  */
@@ -75,16 +77,30 @@ export function MobileMenu() {
         />
       )}
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu Panel - GUARANTEED SOLID WHITE */}
       <div
-        className={`fixed top-0 right-0 bottom-0 w-80 bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 bottom-0 w-80 !bg-white shadow-xl z-50 transform transition-transform duration-300 ease-in-out ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
+        style={{ 
+          backgroundColor: '#FFFFFF !important',
+          background: '#FFFFFF',
+        }}
       >
-        {/* Menu Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
-          <div className="flex items-center gap-2">
-            <span className="text-2xl">🔥</span>
+        {/* Menu Header - White background */}
+        <div 
+          className="flex items-center justify-between p-6 border-b border-gray-200"
+          style={{ backgroundColor: '#FFFFFF' }}
+        >
+          <div className="flex items-center gap-3">
+            {/* Logo Image - BIGGER (60x60) */}
+            <Image
+              src="/images/logo.png"
+              alt={SITE_CONFIG.name}
+              width={60}
+              height={60}
+              className="object-contain"
+            />
             <span className="text-xl font-bold" style={{ color: 'var(--foreground)' }}>
               {SITE_CONFIG.name}
             </span>
@@ -98,8 +114,12 @@ export function MobileMenu() {
           </button>
         </div>
 
-        {/* Navigation Links */}
-        <nav className="p-6">
+        {/* Navigation Links - White background */}
+        <nav 
+          className="p-6"
+          style={{ backgroundColor: '#FFFFFF' }}
+        >
+          {/* Navigation Links */}
           <ul className="space-y-1">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
@@ -115,7 +135,7 @@ export function MobileMenu() {
             ))}
           </ul>
 
-          {/* CTA Button */}
+          {/* Order Now Button - ORANGE LIKE DESKTOP! */}
           <div className="mt-6">
             <Button
               variant="primary"
@@ -131,8 +151,11 @@ export function MobileMenu() {
             </Button>
           </div>
 
-          {/* Contact Info */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
+          {/* Contact Info - White background */}
+          <div 
+            className="mt-8 pt-6 border-t border-gray-200"
+            style={{ backgroundColor: '#FFFFFF' }}
+          >
             <p className="text-sm font-semibold mb-2" style={{ color: 'var(--foreground)' }}>
               Contact Us
             </p>

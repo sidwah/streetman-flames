@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { SITE_CONFIG } from '@/lib/constants';
 import { Navigation } from './navigation';
 import { MobileMenu } from './mobile-menu';
@@ -9,7 +10,8 @@ import { MobileMenu } from './mobile-menu';
  * Header Component
  * 
  * Main site header with:
- * - Logo/Brand name
+ * - Bigger logo image (70x70px)
+ * - Brand name
  * - Desktop navigation (hidden on mobile)
  * - Mobile menu button (visible on mobile)
  * - Sticky positioning with backdrop blur
@@ -32,7 +34,7 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-md'
-          : 'bg-transparent'
+          : 'bg-white/80 backdrop-blur-sm'
       }`}
     >
       <div className="container">
@@ -40,10 +42,18 @@ export function Header() {
           {/* Logo / Brand */}
           <a
             href="#home"
-            className="flex items-center gap-2 text-2xl font-bold transition-colors hover:text-primary"
-            style={{ color: isScrolled ? 'var(--foreground)' : 'var(--foreground)' }}
+            className="flex items-center gap-3 text-2xl font-bold transition-colors hover:text-primary"
+            style={{ color: 'var(--foreground)' }}
           >
-            <span className="text-3xl">🔥</span>
+            {/* Logo Image - BIGGER (70x70) */}
+            <Image
+              src="/images/logo.png"
+              alt={`${SITE_CONFIG.name} Logo`}
+              width={70}
+              height={70}
+              className="object-contain"
+              priority
+            />
             <span>{SITE_CONFIG.name}</span>
           </a>
 

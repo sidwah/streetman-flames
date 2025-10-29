@@ -138,3 +138,26 @@ p {
     padding: 2rem 2rem;
   }
 }
+
+/* CRITICAL FIX: Mobile Menu White Background Override */
+/* This ensures mobile menu is ALWAYS white, no matter what */
+[class*="mobile-menu"],
+[class*="MobileMenu"],
+div[class*="fixed"][class*="right-0"][class*="w-80"] {
+  background-color: #FFFFFF !important;
+  background: #FFFFFF !important;
+}
+
+/* Make sure all child elements also don't have weird backgrounds */
+[class*="mobile-menu"] *,
+[class*="MobileMenu"] *,
+div[class*="fixed"][class*="right-0"][class*="w-80"] * {
+  background-color: transparent;
+}
+
+/* Except for hover states which should have cream */
+[class*="mobile-menu"] a:hover,
+[class*="MobileMenu"] a:hover,
+div[class*="fixed"][class*="right-0"][class*="w-80"] a:hover {
+  background-color: var(--cream) !important;
+}
