@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { heroPreset, fadeIn, slideInLeft, slideInRight } from '@/lib/animation-variants';
+import { heroPreset, fadeIn, slideInRight } from '@/lib/animation-variants';
 
 // Hero carousel images
 const heroImages = [
@@ -31,6 +31,7 @@ export const HeroSection = () => {
   const handleCategoryClick = (index: number) => {
     setActiveIndex(index);
   };
+  
   return (
     <section
       id="home"
@@ -76,7 +77,7 @@ export const HeroSection = () => {
               style={{ color: 'var(--foreground)' }}
             >
               Fresh Street Food{' '}
-              <span style={{ color: 'var(--primary)' }}>You'll Love</span>{' '}
+              <span style={{ color: 'var(--primary)' }}>You&apos;ll Love</span>{' '}
               <span className="inline-block">🔥</span>
             </motion.h1>
 
@@ -86,7 +87,7 @@ export const HeroSection = () => {
               className="text-lg md:text-xl leading-relaxed max-w-xl"
               style={{ color: 'var(--text)' }}
             >
-              Experience authentic street food at UPSA's favorite spot. From sizzling jollof rice to loaded fries and tender chicken, we serve fresh meals that keep you coming back for more.
+              Experience authentic street food at UPSA&apos;s favorite spot. From sizzling jollof rice to loaded fries and tender chicken, we serve fresh meals that keep you coming back for more.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -172,46 +173,14 @@ export const HeroSection = () => {
                     background: `linear-gradient(135deg, ${heroImages[activeIndex].color}15 0%, ${heroImages[activeIndex].color}05 100%)`,
                   }}
                 >
-                  {/* 
-                    TODO: Replace this with your actual hero image
-                    Recommended: 800x800px image of your best dish (loaded fries, jollof, etc.)
-                    Format: JPG or PNG with background
-                  */}
-                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-orange-100 to-orange-50">
-                    <div className="text-center space-y-4">
-                      <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.2, type: 'spring' }}
-                        className="text-9xl"
-                      >
-                        {heroImages[activeIndex].emoji}
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
-                        className="text-2xl font-bold"
-                        style={{ color: 'var(--primary)' }}
-                      >
-                        {heroImages[activeIndex].title}
-                      </motion.div>
-                      <div className="text-sm text-gray-500 max-w-xs mx-auto">
-                        Replace with /images/hero/{heroImages[activeIndex].name.toLowerCase()}.jpg
-                        <br />
-                        (800x800px recommended)
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Uncomment when you have the image: */}
-                  {/* <Image
+                  {/* REAL IMAGES - No more placeholders! */}
+                  <Image
                     src={`/images/hero/${heroImages[activeIndex].name.toLowerCase()}.jpg`}
                     alt={heroImages[activeIndex].title}
                     fill
                     className="object-cover"
                     priority
-                  /> */}
+                  />
                 </motion.div>
               </AnimatePresence>
 
