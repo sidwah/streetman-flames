@@ -395,12 +395,15 @@ export const withDuration = (variants: Variants, duration: number): Variants => 
 
 /**
  * Hero section animation preset
+ * UPDATED: Added description and stats for hero section
  */
 export const heroPreset = {
   container: staggerContainer,
   heading: slideInLeft,
   subheading: withDelay(slideInLeft, 0.2),
+  description: withDelay(slideInLeft, 0.3),
   cta: withDelay(slideInUp, 0.4),
+  stats: withDelay(fadeInScale, 0.5),
   image: fadeInScale,
 };
 
