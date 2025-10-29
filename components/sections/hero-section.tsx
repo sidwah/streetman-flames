@@ -62,13 +62,13 @@ export const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-12 items-center pb-32 lg:pb-0">
-          {/* Left Content - Text (SECOND ON MOBILE, order-1 puts it after carousel) */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Content - Text (ALWAYS VISIBLE, centered on mobile) */}
           <motion.div
             variants={fadeIn}
             initial="hidden"
             animate="visible"
-            className="space-y-6 md:space-y-8 lg:order-1"
+            className="space-y-6 md:space-y-8 lg:order-1 text-center lg:text-left"
           >
             {/* Headline - MOBILE OPTIMIZED */}
             <motion.h1
@@ -84,7 +84,7 @@ export const HeroSection = () => {
             {/* Description - MOBILE OPTIMIZED */}
             <motion.p
               variants={heroPreset.description}
-              className="text-base md:text-lg lg:text-xl leading-relaxed max-w-xl"
+              className="text-base md:text-lg lg:text-xl leading-relaxed max-w-xl mx-auto lg:mx-0"
               style={{ color: 'var(--text)' }}
             >
               Experience authentic street food at UPSA&apos;s favorite spot. From sizzling jollof rice to loaded fries and tender chicken, we serve fresh meals that keep you coming back for more.
@@ -93,7 +93,7 @@ export const HeroSection = () => {
             {/* CTA Buttons - MOBILE OPTIMIZED */}
             <motion.div
               variants={heroPreset.cta}
-              className="flex flex-wrap gap-3 md:gap-4"
+              className="flex flex-wrap gap-3 md:gap-4 justify-center lg:justify-start"
             >
               <Button
                 variant="primary"
@@ -122,7 +122,7 @@ export const HeroSection = () => {
             {/* Quick Stats - MOBILE OPTIMIZED */}
             <motion.div
               variants={heroPreset.stats}
-              className="flex flex-wrap gap-6 md:gap-8 pt-4"
+              className="flex flex-wrap gap-6 md:gap-8 pt-4 justify-center lg:justify-start"
             >
               <div className="space-y-1">
                 <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--primary)' }}>
@@ -151,12 +151,12 @@ export const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right Content - Hero Image with Carousel (FIRST ON MOBILE, order-2 on desktop) */}
+          {/* Right Content - Hero Image with Carousel (HIDDEN ON MOBILE, VISIBLE ON DESKTOP) */}
           <motion.div
             variants={slideInRight}
             initial="hidden"
             animate="visible"
-            className="relative flex items-center justify-center lg:order-2"
+            className="relative items-center justify-center lg:order-2 hidden lg:flex"
           >
             {/* Main Hero Image - CIRCULAR PLATE WITH CAROUSEL */}
             <div className="relative w-full max-w-[600px] aspect-square">
@@ -190,7 +190,7 @@ export const HeroSection = () => {
                 style={{ background: heroImages[activeIndex].color }}
               />
 
-              {/* Carousel Indicators */}
+              {/* Carousel Indicators - Desktop Only */}
               <div className="absolute -bottom-12 left-1/2 -translate-x-1/2 flex gap-3">
                 {heroImages.map((_, index) => (
                   <button
@@ -212,22 +212,23 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Floating Category Icons - Desktop: RIGHT SIDE, Mobile: Bottom */}
-            {/* Desktop Version */}
-            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 space-y-6 hidden lg:block">
+            {/* Floating Category Icons - Desktop Only - RIGHT SIDE */}
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 space-y-4">
               {heroImages.map((category, index) => (
                 <motion.div
                   key={category.name}
                   initial={{ x: 100, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                   transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                  whileHover={{ scale: 1.1, x: -10 }}
+                  whileHover={{ scale: 1.15, x: -10 }}
                   className="group cursor-pointer"
                   onClick={() => handleCategoryClick(index)}
                 >
                   <div
-                    className={`flex items-center gap-3 rounded-full shadow-lg p-3 pr-5 transition-all duration-300 hover:shadow-xl ${
-                      activeIndex === index ? 'ring-4' : ''
+                    className={`flex items-center gap-2 rounded-full shadow-lg transition-all duration-300 hover:shadow-xl ${
+                      activeIndex === index 
+                        ? 'scale-110 p-3 pr-5 ring-4' 
+                        : 'scale-90 p-2 pr-4'
                     }`}
                     style={{
                       background: category.color,
@@ -238,18 +239,26 @@ export const HeroSection = () => {
                     }}
                   >
                     <div
-                      className="w-12 h-12 rounded-full flex items-center justify-center"
+                      className={`rounded-full flex items-center justify-center transition-all duration-300 ${
+                        activeIndex === index ? 'w-12 h-12' : 'w-10 h-10'
+                      }`}
                       style={{
                         background: 'rgba(255, 255, 255, 0.3)',
                         backdropFilter: 'blur(10px)',
                       }}
                     >
-                      <span className="text-2xl filter drop-shadow-lg">{category.emoji}</span>
+                      <span className={`filter drop-shadow-lg transition-all duration-300 ${
+                        activeIndex === index ? 'text-2xl' : 'text-xl'
+                      }`}>
+                        {category.emoji}
+                      </span>
                     </div>
                     <span
-                      className="font-semibold transition-all duration-300"
+                      className={`font-semibold transition-all duration-300 ${
+                        activeIndex === index ? 'text-base' : 'text-sm'
+                      }`}
                       style={{ 
-                        color: activeIndex === index ? '#FFFFFF' : '#6B7280'
+                        color: '#FFFFFF'  // ALWAYS WHITE
                       }}
                     >
                       {category.name}
@@ -258,40 +267,11 @@ export const HeroSection = () => {
                 </motion.div>
               ))}
             </div>
-
-            {/* Mobile Version - Horizontal Scroll Below Image (Icons Only, No Labels) */}
-            <div className="absolute -bottom-20 left-0 right-0 lg:hidden">
-              <div className="flex gap-3 overflow-x-auto pb-2 px-4 scrollbar-hide justify-center">
-                {heroImages.map((category, index) => (
-                  <motion.button
-                    key={category.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    onClick={() => handleCategoryClick(index)}
-                    className={`flex-shrink-0 flex items-center justify-center p-4 rounded-full transition-all duration-300 ${
-                      activeIndex === index ? 'scale-110' : ''
-                    }`}
-                    style={{
-                      background: activeIndex === index ? category.color : 'rgba(255, 255, 255, 0.9)',
-                      boxShadow: activeIndex === index 
-                        ? `0 4px 12px ${category.color}60, 0 0 0 3px ${category.color}40`
-                        : '0 2px 8px rgba(0,0,0,0.1)',
-                      width: '64px',
-                      height: '64px',
-                    }}
-                    aria-label={category.name}
-                  >
-                    <span className="text-3xl">{category.emoji}</span>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Desktop Only */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
