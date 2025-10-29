@@ -68,12 +68,12 @@ export const HeroSection = () => {
             variants={fadeIn}
             initial="hidden"
             animate="visible"
-            className="space-y-8 lg:order-1"
+            className="space-y-6 md:space-y-8 lg:order-1"
           >
-            {/* Headline */}
+            {/* Headline - MOBILE OPTIMIZED */}
             <motion.h1
               variants={heroPreset.heading}
-              className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight"
+              className="text-4xl md:text-5xl lg:text-7xl font-extrabold leading-tight"
               style={{ color: 'var(--foreground)' }}
             >
               Fresh Street Food{' '}
@@ -81,19 +81,19 @@ export const HeroSection = () => {
               <span className="inline-block">🔥</span>
             </motion.h1>
 
-            {/* Description */}
+            {/* Description - MOBILE OPTIMIZED */}
             <motion.p
               variants={heroPreset.description}
-              className="text-lg md:text-xl leading-relaxed max-w-xl"
+              className="text-base md:text-lg lg:text-xl leading-relaxed max-w-xl"
               style={{ color: 'var(--text)' }}
             >
               Experience authentic street food at UPSA&apos;s favorite spot. From sizzling jollof rice to loaded fries and tender chicken, we serve fresh meals that keep you coming back for more.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - MOBILE OPTIMIZED */}
             <motion.div
               variants={heroPreset.cta}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-3 md:gap-4"
             >
               <Button
                 variant="primary"
@@ -101,7 +101,7 @@ export const HeroSection = () => {
                 onClick={() => {
                   document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-shadow"
+                className="px-6 py-4 md:px-8 md:py-6 text-base md:text-lg font-semibold shadow-lg hover:shadow-xl transition-shadow"
               >
                 Explore Menu
               </Button>
@@ -109,42 +109,42 @@ export const HeroSection = () => {
               <Button
                 variant="outline"
                 size="lg"
-                leftIcon={<Search className="w-5 h-5" />}
+                leftIcon={<Search className="w-4 h-4 md:w-5 md:h-5" />}
                 onClick={() => {
                   document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="px-8 py-6 text-lg font-semibold"
+                className="px-6 py-4 md:px-8 md:py-6 text-base md:text-lg font-semibold"
               >
                 Search
               </Button>
             </motion.div>
 
-            {/* Quick Stats */}
+            {/* Quick Stats - MOBILE OPTIMIZED */}
             <motion.div
               variants={heroPreset.stats}
-              className="flex flex-wrap gap-8 pt-4"
+              className="flex flex-wrap gap-6 md:gap-8 pt-4"
             >
               <div className="space-y-1">
-                <div className="text-3xl font-bold" style={{ color: 'var(--primary)' }}>
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--primary)' }}>
                   31+
                 </div>
-                <div className="text-sm" style={{ color: 'var(--text)' }}>
+                <div className="text-xs md:text-sm" style={{ color: 'var(--text)' }}>
                   Menu Items
                 </div>
               </div>
               <div className="space-y-1">
-                <div className="text-3xl font-bold" style={{ color: 'var(--primary)' }}>
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--primary)' }}>
                   4.8★
                 </div>
-                <div className="text-sm" style={{ color: 'var(--text)' }}>
+                <div className="text-xs md:text-sm" style={{ color: 'var(--text)' }}>
                   Rating
                 </div>
               </div>
               <div className="space-y-1">
-                <div className="text-3xl font-bold" style={{ color: 'var(--primary)' }}>
+                <div className="text-2xl md:text-3xl font-bold" style={{ color: 'var(--primary)' }}>
                   100%
                 </div>
-                <div className="text-sm" style={{ color: 'var(--text)' }}>
+                <div className="text-xs md:text-sm" style={{ color: 'var(--text)' }}>
                   Fresh
                 </div>
               </div>
