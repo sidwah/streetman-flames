@@ -13,7 +13,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to process contact form' },
+      { error: 'Failed to process contact form', details: error },
       { status: 500 }
     );
   }
