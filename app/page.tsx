@@ -1,5 +1,5 @@
 import { Header, Footer } from '@/components/layout';
-import { HeroSection, PopularDishes } from '@/components/sections';
+import { HeroSection, PopularDishes, AboutUs } from '@/components/sections';
 
 export default function Home() {
   return (
@@ -13,9 +13,8 @@ export default function Home() {
         <PopularDishes />
 
         {/* Placeholder for future sections */}
-        <section id="about" className="container section min-h-screen">
-          <h2 className="text-4xl font-bold">About Us - Coming Soon</h2>
-        </section>
+          <AboutUs />
+
 
         <section id="menu" className="container section min-h-screen">
           <h2 className="text-4xl font-bold">Full Menu - Coming Soon</h2>

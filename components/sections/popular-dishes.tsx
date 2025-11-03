@@ -28,6 +28,15 @@ export const PopularDishes = () => {
     scrollToIndex(newIndex);
   }, [activeIndex, featuredItems.length, scrollToIndex]);
 
+  const scrollLeft = useCallback(() => {
+    const newIndex = activeIndex > 0 ? activeIndex - 1 : featuredItems.length - 1;
+    scrollToIndex(newIndex);
+  }, [activeIndex, featuredItems.length, scrollToIndex]);
+
+  const scrollRight = useCallback(() => {
+    scrollToNext();
+  }, [scrollToNext]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       scrollToNext();
@@ -35,15 +44,6 @@ export const PopularDishes = () => {
 
     return () => clearInterval(interval);
   }, [scrollToNext]);
-
-  const scrollLeft = () => {
-    const newIndex = activeIndex > 0 ? activeIndex - 1 : featuredItems.length - 1;
-    scrollToIndex(newIndex);
-  };
-
-  const scrollRight = () => {
-    scrollToNext();
-  };
 
   return (
     <section
@@ -69,10 +69,10 @@ export const PopularDishes = () => {
           viewport={{ once: true, margin: '-100px' }}
         >
           <motion.div variants={fadeIn}>
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold text-heading">
+            <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold text-heading">
               Popular Dishes
             </h2>
-            <p className="text-sm md:text-base lg:text-lg text-text mt-1 md:mt-2">
+            <p className="text-xs md:text-base lg:text-lg text-text mt-1 md:mt-2">
               Customer favorites and top picks
             </p>
           </motion.div>
@@ -126,9 +126,6 @@ export const PopularDishes = () => {
               </motion.div>
             ))}
           </div>
-
-          <div className="hidden lg:block absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-cream to-transparent pointer-events-none" />
-          <div className="hidden lg:block absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-cream to-transparent pointer-events-none" />
         </motion.div>
 
         <motion.div
