@@ -57,31 +57,36 @@ export const RotatingCircle: React.FC<RotatingCircleProps> = ({
                 <clipPath id={`clip-${section.id}`}>
                   <path d={getSectionPath(index)} />
                 </clipPath>
-                <pattern
-                  id={`pattern-${section.id}`}
-                  patternUnits="objectBoundingBox"
-                  width="1"
-                  height="1"
+                <linearGradient
+                  id={`gradient-${section.id}`}
+                  x1="0%"
+                  y1="0%"
+                  x2="100%"
+                  y2="100%"
                 >
-                  <image
-                    href={section.previewImage}
-                    x="0"
-                    y="0"
-                    width="400"
-                    height="400"
-                    preserveAspectRatio="xMidYMid slice"
+                  <stop
+                    offset="0%"
+                    style={{ stopColor: section.color, stopOpacity: 0.3 }}
                   />
-                </pattern>
+                  <stop
+                    offset="100%"
+                    style={{ stopColor: section.color, stopOpacity: 0.6 }}
+                  />
+                </linearGradient>
               </React.Fragment>
             ))}
           </defs>
 
           {aboutSections.map((section, index) => {
+            const centerAngle = (index * anglePerSection + anglePerSection / 2 - 90) * (Math.PI / 180);
+            const iconX = 200 + 120 * Math.cos(centerAngle);
+            const iconY = 200 + 120 * Math.sin(centerAngle);
+
             return (
               <g key={section.id}>
                 <path
                   d={getSectionPath(index)}
-                  fill={`url(#pattern-${section.id})`}
+                  fill={`url(#gradient-${section.id})`}
                   stroke={section.color}
                   strokeWidth="3"
                   className="cursor-pointer transition-all duration-300"
@@ -89,10 +94,37 @@ export const RotatingCircle: React.FC<RotatingCircleProps> = ({
                   onMouseEnter={() => setHoveredIndex(index)}
                   onMouseLeave={() => setHoveredIndex(null)}
                   style={{
-                    opacity: hoveredIndex === index ? 1 : 0.95,
-                    filter: hoveredIndex === index ? 'brightness(1.1)' : 'brightness(0.9)',
+                    opacity: hoveredIndex === index ? 1 : 0.85,
+                    filter: hoveredIndex === index ? 'brightness(1.1)' : 'none',
                   }}
                 />
+                
+                <text
+                  x={iconX}
+                  y={iconY - 10}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontSize="40"
+                  className="pointer-events-none"
+                >
+                  {section.icon}
+                </text>
+                
+                <text
+                  x={iconX}
+                  y={iconY + 25}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fontSize="14"
+                  fontWeight="700"
+                  fill="#FFFFFF"
+                  className="pointer-events-none"
+                  style={{
+                    filter: 'drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5))',
+                  }}
+                >
+                  {section.shortTitle}
+                </text>
               </g>
             );
           })}
@@ -108,7 +140,7 @@ export const RotatingCircle: React.FC<RotatingCircleProps> = ({
           
           <foreignObject x="150" y="130" width="100" height="50">
             <div className="flex items-center justify-center w-full h-full">
-              <Image
+              <img 
                 src="/images/logo.png" 
                 alt="Streetman Flames Logo" 
                 className="w-10 h-10 object-contain"
