@@ -1,5 +1,5 @@
 import { Header, Footer } from '@/components/layout';
-import { HeroSection, PopularDishes, AboutUs } from '@/components/sections';
+import { HeroSection, PopularDishes, AboutUs, MenuSection, OrderFlow } from '@/components/sections';
 
 export default function Home() {
   return (
@@ -12,13 +12,14 @@ export default function Home() {
         {/* Popular Dishes Section */}
         <PopularDishes />
 
-        {/* Placeholder for future sections */}
-          <AboutUs />
+        {/* About Us Section */}
+        <AboutUs />
 
+        {/* Full Menu Section */}
+        <MenuSection />
 
-        <section id="menu" className="container section min-h-screen">
-          <h2 className="text-4xl font-bold">Full Menu - Coming Soon</h2>
-        </section>
+        {/* Full Order Section */}
+        <OrderFlow />
 
         <section id="contact" className="container section min-h-screen">
           <h2 className="text-4xl font-bold">Contact - Coming Soon</h2>

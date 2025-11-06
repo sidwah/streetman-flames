@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { aboutSections } from '@/data/about-sections';
 
 interface RotatingCircleProps {

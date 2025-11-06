@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Flame, Clock, Users, MapPin, Sparkles, ShoppingBag } from 'lucide-react';
-import { aboutSections, getAboutSectionByIndex } from '@/data/about-sections';
+import { getAboutSectionByIndex } from '@/data/about-sections';
 import { RotatingCircle } from '../about/rotating-circle';
 import { AboutModal } from '../about/about-modal';
 import { FeatureCard } from '../about/feature-card';
