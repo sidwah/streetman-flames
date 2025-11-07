@@ -1,5 +1,5 @@
 import { Header, Footer } from '@/components/layout';
-import { HeroSection, PopularDishes, AboutUs, MenuSection, OrderFlow } from '@/components/sections';
+import { HeroSection, PopularDishes, AboutUs, MenuSection, OrderFlow, Testimonials } from '@/components/sections';
 
 export default function Home() {
   return (
@@ -20,6 +20,9 @@ export default function Home() {
 
         {/* Full Order Section */}
         <OrderFlow />
+
+        {/* Full Testimonials Section */}
+        <Testimonials />
 
         <section id="contact" className="container section min-h-screen">
           <h2 className="text-4xl font-bold">Contact - Coming Soon</h2>
