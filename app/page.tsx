@@ -1,5 +1,5 @@
 import { Header, Footer } from '@/components/layout';
-import { HeroSection, PopularDishes, AboutUs, MenuSection, OrderFlow, Testimonials } from '@/components/sections';
+import { HeroSection, PopularDishes, AboutUs, MenuSection, OrderFlow, Testimonials, ContactSection} from '@/components/sections';
 
 export default function Home() {
   return (
@@ -24,8 +24,9 @@ export default function Home() {
         {/* Full Testimonials Section */}
         <Testimonials />
 
-        <section id="contact" className="container section min-h-screen">
-          <h2 className="text-4xl font-bold">Contact - Coming Soon</h2>
+        {/* Full Contact Section */}
+        <section id="contact">
+          <ContactSection />
         </section>
       </main>
       <Footer />

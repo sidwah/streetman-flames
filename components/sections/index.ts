@@ -7,3 +7,4 @@ export { AboutUs } from './about-us';
 export { MenuSection } from './menu-section';
 export { OrderFlow } from './order-flow';
 export { Testimonials } from './testimonials';
+export { ContactSection } from './contact-section'; 
