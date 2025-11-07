@@ -28,9 +28,9 @@ export const testimonials: Testimonial[] = [
   },
   {
     id: '3',
-    name: 'Kofi Addo',
+    name: 'Lipton',
     role: 'Campus Regular',
-    avatar: '/images/testimonials/kofi.jpg',
+    avatar: '/images/testimonials/lipton.jpg',
     rating: 4.5,
     quote:
       'Great food at student-friendly prices! The chicken is always well-seasoned and cooked perfectly. My go-to spot behind Hostel C.',
@@ -61,6 +61,16 @@ export const testimonials: Testimonial[] = [
     name: 'Efua Darko',
     role: 'Hostel C Resident',
     avatar: '/images/testimonials/efua.jpg',
+    rating: 5,
+    quote:
+      "Being right behind Hostel C makes it so convenient! Their boba milkshakes are incredible - perfect after a long day of classes. Highly recommend!",
+    date: '2024-10-12',
+  },
+  {
+    id: '7',
+    name: 'Benedicta Godzi',
+    role: 'Hostel C Resident',
+    avatar: '/images/testimonials/benedicta-godzi.jpg',
     rating: 5,
     quote:
       "Being right behind Hostel C makes it so convenient! Their boba milkshakes are incredible - perfect after a long day of classes. Highly recommend!",
